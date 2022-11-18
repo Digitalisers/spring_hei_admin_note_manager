@@ -9,13 +9,7 @@ import lombok.ToString;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -61,6 +55,9 @@ public class User implements Serializable {
     @Column(name = "\"role\"")
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @ManyToOne
+    private Group group;
 
     public enum Sex {
         M, F
