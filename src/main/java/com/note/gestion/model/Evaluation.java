@@ -8,8 +8,8 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import java.io.Serializable;
+
+import java.time.LocalDate;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -18,13 +18,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Grade implements Serializable {
+public class Evaluation {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
-    private Double average;
-
-    @ManyToOne
-    private Evaluation evaluation;
+    private LocalDate dateExamen;
 }
