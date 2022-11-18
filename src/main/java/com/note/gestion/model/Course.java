@@ -8,9 +8,6 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
-import java.time.LocalDate;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -19,13 +16,14 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Evaluation {
+public class Course {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private Long id;
+    private Long idCourse;
 
-    private LocalDate dateExamen;
+    private String name;
 
-    @ManyToOne
-    private Course course;
+    private Integer credits;
+
+    private Integer coef;
 }
