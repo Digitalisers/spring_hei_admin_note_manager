@@ -28,4 +28,7 @@ public class Evaluation {
 
     @ManyToOne
     private Course course;
+
+    @ManyToOne
+    private Semestre semestre;
 }
