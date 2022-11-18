@@ -41,18 +41,18 @@ public class EvaluationService {
     }
 
     //PUT mapping
-    public Evaluation putModification(EvaluationMapper EVALUATIONmodified){
-        Evaluation EVALUATION = evaluationRepository.findById(EVALUATIONmodified.getIdEvaluation()).orElseThrow(()-> new NullPointerException("not found"));
-        Semestre SEMESTRE = semestreRepository.findById(EVALUATIONmodified.getIdSemestre()).orElseThrow(()->new NullPointerException("not found"));
-        Course COURSE = courseRepository.findById(EVALUATIONmodified.getIdCourse()).orElseThrow(()-> new NullPointerException("not found"));
+    public Evaluation putModification(Long idEvaluation, EvaluationMapper EVALUATION_MODIFIED){
+        Evaluation EVALUATION = evaluationRepository.findById(idEvaluation).orElseThrow(()-> new NullPointerException("not found"));
+        Semestre SEMESTRE = semestreRepository.findById(EVALUATION_MODIFIED.getIdSemestre()).orElseThrow(()->new NullPointerException("not found"));
+        Course COURSE = courseRepository.findById(EVALUATION_MODIFIED.getIdCourse()).orElseThrow(()-> new NullPointerException("not found"));
 
-        if(EVALUATIONmodified.getDateExamen() != EVALUATION.getDateExamen()){
-            EVALUATION.setDateExamen(EVALUATIONmodified.getDateExamen());
+        if(EVALUATION_MODIFIED.getDateExamen() != EVALUATION.getDateExamen()){
+            EVALUATION.setDateExamen(EVALUATION_MODIFIED.getDateExamen());
         }
-        if(EVALUATIONmodified.getIdSemestre() != EVALUATION.getSemestre().getIdSemestre()){
+        if(EVALUATION_MODIFIED.getIdSemestre() != EVALUATION.getSemestre().getIdSemestre()){
             EVALUATION.setSemestre(SEMESTRE);
         }
-        if(EVALUATIONmodified.getIdCourse() != EVALUATION.getCourse().getIdCourse()){
+        if(EVALUATION_MODIFIED.getIdCourse() != EVALUATION.getCourse().getIdCourse()){
             EVALUATION.setCourse(COURSE);
         }
         evaluationRepository.save(EVALUATION);
