@@ -21,7 +21,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Grade implements Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private Long id;
+    private Long idGrade;
 
     private Float average;
 
