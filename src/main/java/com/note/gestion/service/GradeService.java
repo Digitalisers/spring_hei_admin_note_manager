@@ -36,8 +36,8 @@ public class GradeService {
     }
 
     //PUT mapping
-    public Grade putModification(GradeMapper GRADE_MODIFIED){
-        Grade THIS_GRADE = gradeRepository.findById(GRADE_MODIFIED.getIdGrade()).orElseThrow(()->new NullPointerException("not found"));
+    public Grade putModification(Long idGrade, GradeMapper GRADE_MODIFIED){
+        Grade THIS_GRADE = gradeRepository.findById(idGrade).orElseThrow(()->new NullPointerException("not found"));
         Evaluation EVALUATION = evaluationRepository.findById(GRADE_MODIFIED.getIdEvaluation()).orElseThrow(()-> new NullPointerException("not found"));
 
         if(GRADE_MODIFIED.getAverage() != THIS_GRADE.getAverage()){
