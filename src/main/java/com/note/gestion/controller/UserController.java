@@ -21,6 +21,15 @@ public class UserController {
         return userService.getAllUsers(page, pageSize);
     }
 
+    @GetMapping("/user")
+    public User getUserById(
+            @RequestParam(name = "first_name")String firstName,
+            @RequestParam(name = "last_name")String lastName,
+            @RequestParam(name = "ref")String ref
+    ){
+        return userService.getUserByAttributes(firstName, lastName, ref);
+    }
+
     @PostMapping("/user")
     public User insertUser(@RequestParam UserMapper newUser){
         return userService.insertUser(newUser);
