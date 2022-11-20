@@ -47,6 +47,7 @@ public class GradeService {
         }).toList();
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //POST mapping
     public Grade insertGrade(GradeMapper newGrade){
         Grade grade = new Grade();
@@ -58,6 +59,7 @@ public class GradeService {
         return grade;
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //PUT mapping
     public Grade putModification(Long idGrade, GradeMapper GRADE_MODIFIED){
         Grade THIS_GRADE = gradeRepository.findById(idGrade).orElseThrow(()->new NullPointerException("not found"));
@@ -73,6 +75,7 @@ public class GradeService {
         return THIS_GRADE;
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //DELETE mapping
     public String deleteGrade(Long idEvaluation){
         gradeRepository.deleteById(idEvaluation);
