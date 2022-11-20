@@ -1,6 +1,7 @@
 package com.note.gestion.service;
 
 import com.note.gestion.mapper.UserMapper;
+import com.note.gestion.model.Grade;
 import com.note.gestion.model.Group;
 import com.note.gestion.model.User;
 import com.note.gestion.repository.GroupRepository;
@@ -8,8 +9,8 @@ import com.note.gestion.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,13 +19,31 @@ import java.util.List;
 public class UserService {
     private UserRepository userRepository;
     private GroupRepository groupRepository;
+    private GradeService gradeService;
 
     //GET mapping
+        //1.get all users
     public List<User> getAllUsers(int page, int pageSize){
         Pageable pageable = PageRequest.of(page-1, pageSize);
         return userRepository.findAll(pageable).toList();
     }
 
+        //2.get one user.role.STUDENT
+    @Transactional
+    public User getUserByAttributes(String firstName, String lastName, String ref){
+        User THIS_USER = userRepository.findByFirstNameContainingIgnoreCaseAndLastNameContainingIgnoreCaseAndRefContainingIgnoreCase(firstName, lastName, ref);
+        Float STUDENT_AVERAGE = null;
+        Integer totalCoef = null;
+        List<Grade> COURSE_GRADES = gradeService.getAllGradeOfOneStudent(THIS_USER.getIdUser());
+       for(Grade grade : COURSE_GRADES){
+           STUDENT_AVERAGE += grade.getAverage();
+           totalCoef += grade.getEvaluation().getCourse().getCoef();
+       }
+       STUDENT_AVERAGE = STUDENT_AVERAGE / totalCoef;
+        THIS_USER.setStudentAverage(STUDENT_AVERAGE);
+        return THIS_USER;
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //POST mapping
     public User insertUser(UserMapper USER){
         User NEW_USER =  new User();
@@ -44,6 +63,7 @@ public class UserService {
         return NEW_USER;
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //PUT mapping
     public User putModification(Long idUser, UserMapper USER_MODIFIED){
         User USER = userRepository.findById(idUser).orElseThrow(()->new NullPointerException("not found"));
@@ -77,6 +97,7 @@ public class UserService {
         return USER;
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //DELETE mapping
     public String deleteUser(Long idUser){
         userRepository.deleteById(idUser);

@@ -38,6 +38,9 @@ public class User implements Serializable {
 
     private String ref;
 
+    @Transient
+    private Float studentAverage;
+
     @Enumerated(EnumType.STRING)
     private Status status;
 
