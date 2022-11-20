@@ -31,7 +31,7 @@ public class GroupService {
     }
 
     //PUT mapping
-    public Group putModification(Long idGroup, Group GROUP_MODIFIED){
+    public Group putModification(String idGroup, Group GROUP_MODIFIED){
         Group GROUP = groupRepository.findById(idGroup).orElseThrow(()-> new NullPointerException("not found"));
         if(GROUP_MODIFIED.getName() != GROUP.getName()){
             GROUP.setName(GROUP_MODIFIED.getName());
@@ -47,7 +47,7 @@ public class GroupService {
     }
 
     //DELETE mapping
-    public String deleteGroup(Long idGroup){
+    public String deleteGroup(String idGroup){
         groupRepository.deleteById(idGroup);
         return "group deleted successfully";
     }

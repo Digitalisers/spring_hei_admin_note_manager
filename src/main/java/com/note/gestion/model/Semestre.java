@@ -19,7 +19,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Semestre {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private Long idSemestre;
+    private String idSemestre;
 
     private String name;
 

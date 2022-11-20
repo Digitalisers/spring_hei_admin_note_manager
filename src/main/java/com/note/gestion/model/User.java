@@ -28,7 +28,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private Long idUser;
+    private String idUser;
 
     private String firstName;
 

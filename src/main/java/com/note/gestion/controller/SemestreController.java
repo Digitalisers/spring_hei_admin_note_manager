@@ -27,14 +27,14 @@ public class SemestreController {
 
     @PutMapping("/semestre/{id_semestre}")
     public Semestre putModification(
-            @PathVariable(name = "id_semestre")Long idSemestre,
+            @PathVariable(name = "id_semestre")String idSemestre,
             @RequestParam Semestre semestreModified
     ){
         return semestreService.putModification(idSemestre, semestreModified);
     }
 
     @DeleteMapping("/semestre/{id_semestre}")
-    public String deleteSemestre(@PathVariable(name = "id_semestre")Long idSemestre){
+    public String deleteSemestre(@PathVariable(name = "id_semestre")String idSemestre){
         return semestreService.deleteSemestre(idSemestre);
     }
 }

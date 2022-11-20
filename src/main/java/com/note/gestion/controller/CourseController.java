@@ -33,14 +33,14 @@ public class CourseController {
 
     @PutMapping("/course/{id_course}")
     public Course putModification(
-            @PathVariable(name = "id_course")Long idCourse,
+            @PathVariable(name = "id_course")String idCourse,
             @RequestParam Course courseModified
     ){
         return courseService.putModification(idCourse, courseModified);
     }
 
     @DeleteMapping("/course/{id_course}")
-    public String deleteCourse(@PathVariable(name = "id_course")Long idCourse){
+    public String deleteCourse(@PathVariable(name = "id_course")String idCourse){
         return courseService.deleteCourse(idCourse);
     }
 }

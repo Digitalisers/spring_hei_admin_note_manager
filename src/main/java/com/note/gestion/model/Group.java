@@ -30,7 +30,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Group implements Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private Long idGroup;
+    private String idGroup;
 
     private String name;
     private String ref;

@@ -41,7 +41,7 @@ public class EvaluationService {
     }
 
     //PUT mapping
-    public Evaluation putModification(Long idEvaluation, EvaluationMapper EVALUATION_MODIFIED){
+    public Evaluation putModification(String idEvaluation, EvaluationMapper EVALUATION_MODIFIED){
         Evaluation EVALUATION = evaluationRepository.findById(idEvaluation).orElseThrow(()-> new NullPointerException("not found"));
         Semestre SEMESTRE = semestreRepository.findById(EVALUATION_MODIFIED.getIdSemestre()).orElseThrow(()->new NullPointerException("not found"));
         Course COURSE = courseRepository.findById(EVALUATION_MODIFIED.getIdCourse()).orElseThrow(()-> new NullPointerException("not found"));
@@ -60,7 +60,7 @@ public class EvaluationService {
     }
 
     //DELETE mapping
-    public String deleteEvaluation(Long idEvaluation){
+    public String deleteEvaluation(String idEvaluation){
         evaluationRepository.deleteById(idEvaluation);
         return "evaluation deleted successfully";
     }

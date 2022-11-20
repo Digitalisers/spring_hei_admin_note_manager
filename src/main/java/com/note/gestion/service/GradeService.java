@@ -26,7 +26,7 @@ public class GradeService {
         return gradeRepository.findAll(pageable).toList();
     }
         //2.get all grade of one course in one specific semester
-    public List<Grade> getGradeByCourse(Long idCourse){
+    public List<Grade> getGradeByCourse(String idCourse){
         List<Grade> ALL_GRADE = gradeRepository.findAll();
         return ALL_GRADE.stream().filter(element -> {
             return  element
@@ -37,7 +37,7 @@ public class GradeService {
         }).toList();
     }
         //3.get all grade of one student during all
-    public List<Grade> getAllGradeOfOneStudent(Long idStudent){
+    public List<Grade> getAllGradeOfOneStudent(String idStudent){
         List<Grade> ALL_GRADE = gradeRepository.findAll();
         return ALL_GRADE.stream().filter(element -> {
             return element
@@ -61,7 +61,7 @@ public class GradeService {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //PUT mapping
-    public Grade putModification(Long idGrade, GradeMapper GRADE_MODIFIED){
+    public Grade putModification(String idGrade, GradeMapper GRADE_MODIFIED){
         Grade THIS_GRADE = gradeRepository.findById(idGrade).orElseThrow(()->new NullPointerException("not found"));
         Evaluation EVALUATION = evaluationRepository.findById(GRADE_MODIFIED.getIdEvaluation()).orElseThrow(()-> new NullPointerException("not found"));
 
@@ -77,7 +77,7 @@ public class GradeService {
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //DELETE mapping
-    public String deleteGrade(Long idEvaluation){
+    public String deleteGrade(String idEvaluation){
         gradeRepository.deleteById(idEvaluation);
         return "evaluation deleted successfully";
     }

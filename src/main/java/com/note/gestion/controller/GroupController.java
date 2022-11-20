@@ -27,14 +27,14 @@ public class GroupController {
 
     @PutMapping("/group/{id_group}")
     public Group putModification(
-            @PathVariable(name = "id_group")Long idGroup,
+            @PathVariable(name = "id_group")String idGroup,
             @RequestParam Group groupModified
     ){
         return groupService.putModification(idGroup, groupModified);
     }
 
     @DeleteMapping("/group/{id_group}")
-    public String deleteGroup(@PathVariable(name = "id_group")Long idGroup){
+    public String deleteGroup(@PathVariable(name = "id_group")String idGroup){
         return groupService.deleteGroup(idGroup);
     }
 }

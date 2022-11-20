@@ -32,7 +32,7 @@ public class CourseService {
     }
 
     //PUT mapping
-    public Course putModification(Long id, Course courseModified){
+    public Course putModification(String id, Course courseModified){
         Course thisCourse = courseRepository.findById(id).orElseThrow(()-> new NullPointerException("not found"));
         if(thisCourse.getCoef() != courseModified.getCoef()){
             thisCourse.setCoef(courseModified.getCoef());
@@ -48,7 +48,7 @@ public class CourseService {
     }
 
     //DELETE mapping
-    public String deleteCourse(Long id){
+    public String deleteCourse(String id){
         courseRepository.deleteById(id);
         return "course is delete successfully";
     }
