@@ -15,6 +15,7 @@ public class CourseService {
     private CourseRepository courseRepository;
 
     //GET mapping
+        //1.get all course
     public List<Course> getAllCourses(int page, int pageSize){
         Pageable pageable = PageRequest.of(page-1, pageSize);
         return courseRepository.findAll(pageable).toList();

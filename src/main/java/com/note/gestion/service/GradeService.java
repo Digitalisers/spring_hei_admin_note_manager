@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,9 +20,31 @@ public class GradeService {
     private EvaluationRepository evaluationRepository;
 
     //GET mapping
+        //1.get all grade
     public List<Grade> getAllGrade(int page, int pageSize){
         Pageable pageable = PageRequest.of(page-1, pageSize);
         return gradeRepository.findAll(pageable).toList();
+    }
+        //2.get all grade of one course in one specific semester
+    public List<Grade> getGradeByCourse(Long idCourse){
+        List<Grade> ALL_GRADE = gradeRepository.findAll();
+        return ALL_GRADE.stream().filter(element -> {
+            return  element
+                    .getEvaluation()
+                    .getCourse()
+                    .getIdCourse()
+                    .equals(idCourse);
+        }).toList();
+    }
+        //3.get all grade of one student during all
+    public List<Grade> getAllGradeOfOneStudent(Long idStudent){
+        List<Grade> ALL_GRADE = gradeRepository.findAll();
+        return ALL_GRADE.stream().filter(element -> {
+            return element
+                    .getStudent()
+                    .getIdUser()
+                    .equals(idStudent);
+        }).toList();
     }
 
     //POST mapping

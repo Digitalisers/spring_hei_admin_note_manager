@@ -27,4 +27,7 @@ public class Grade implements Serializable {
 
     @ManyToOne
     private Evaluation evaluation;
+
+    @ManyToOne
+    private User student;
 }
