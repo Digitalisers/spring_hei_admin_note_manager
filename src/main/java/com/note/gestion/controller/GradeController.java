@@ -32,6 +32,11 @@ public class GradeController {
         return gradeService.getGradeByCourse(idCourse);
     }
 
+    @GetMapping("/student/grade/{id_student}")
+    public List<Grade> getGradeByStudent(@PathVariable(name = "id_student")Long idStudent){
+        return gradeService.getAllGradeOfOneStudent(idStudent);
+    }
+
     @PostMapping("/grade")
     public Grade insertGrade(@RequestParam GradeMapper newGrade){
         return gradeService.insertGrade(newGrade);
