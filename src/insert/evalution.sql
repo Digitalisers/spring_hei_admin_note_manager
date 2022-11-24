@@ -1,0 +1,21 @@
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2022-10-03', 2, 2);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2022-10-21', 7, 1);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2021-12-03', 4, 1);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2022-08-06', 7, 2);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2022-04-10', 3, 4);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2022-09-21', 4, 1);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2022-05-10', 1, 4);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2022-05-14', 5, 3);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2022-02-28', 3, 1);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2022-10-21', 1, 1);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2021-12-26', 1, 4);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2022-02-09', 1, 1);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2022-04-22', 2, 2);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2022-02-07', 6, 4);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2022-07-04', 3, 4);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2022-04-05', 5, 1);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2022-09-15', 5, 1);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2022-06-05', 1, 3);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2022-01-15', 4, 4);
+insert into evaluation (date_examen, course_id_course , semestre_id_semestre ) values ('2022-08-22', 7, 3);
+
