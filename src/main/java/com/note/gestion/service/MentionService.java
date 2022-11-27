@@ -30,7 +30,7 @@ public class MentionService {
     }
 
     //PUT mapping
-    public Mention putModification(String idMention, Mention MENTION_MODIFIED){
+    public Mention putModification(Long idMention, Mention MENTION_MODIFIED){
         Mention MENTION = mentionRepository.findById(idMention).orElseThrow(()->new NullPointerException("not found"));
         if(MENTION_MODIFIED.getName() != MENTION.getName()){
             MENTION.setName(MENTION_MODIFIED.getName());
@@ -43,7 +43,7 @@ public class MentionService {
     }
 
     //DELETE mapping
-    public String deleteMention(String idMention){
+    public String deleteMention(Long idMention){
         mentionRepository.deleteById(idMention);
         return "mention deleted successfully";
     }

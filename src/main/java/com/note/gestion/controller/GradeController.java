@@ -33,7 +33,7 @@ public class GradeController {
     }
 
     @GetMapping("/student/grade/{id_student}")
-    public List<Grade> getGradeByStudent(@PathVariable(name = "id_student")String idStudent){
+    public List<Grade> getGradeByStudent(@PathVariable(name = "id_student")Long idStudent){
         return gradeService.getAllGradeOfOneStudent(idStudent);
     }
 
@@ -44,14 +44,14 @@ public class GradeController {
 
     @PutMapping("/grade/{id_grade}")
     public Grade putModification(
-            @PathVariable(name = "id_grade")String idGrade,
+            @PathVariable(name = "id_grade")Long idGrade,
             @RequestParam GradeMapper gradeModified
     ){
         return gradeService.putModification(idGrade, gradeModified);
     }
 
     @DeleteMapping("/grade/{id_grade}")
-    public String deleteGrade(@PathVariable(name = "id_grade")String idGrade){
+    public String deleteGrade(@PathVariable(name = "id_grade")Long idGrade){
         return gradeService.deleteGrade(idGrade);
     }
 }

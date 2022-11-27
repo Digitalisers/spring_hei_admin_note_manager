@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 public class UserMapper {
-    private String idUser;
+    private Long idUser;
 
     private String firstName;
 
@@ -34,5 +34,5 @@ public class UserMapper {
 
     private User.Role role;
 
-    private String idGroupe;
+    private Long idGroupe;
 }

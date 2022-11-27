@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
@@ -25,10 +23,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class User implements Serializable {
+public class User {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private String idUser;
+    private Long idUser;
 
     private String firstName;
 
@@ -41,7 +39,6 @@ public class User implements Serializable {
     @Transient
     private Float studentAverage;
 
-    @Enumerated(EnumType.STRING)
     private Status status;
 
     private String phone;
@@ -50,13 +47,11 @@ public class User implements Serializable {
 
     private Instant entranceDatetime;
 
-    @Enumerated(EnumType.STRING)
     private Sex sex;
 
     private String address;
 
     @Column(name = "\"role\"")
-    @Enumerated(EnumType.STRING)
     private Role role;
 
     @ManyToOne

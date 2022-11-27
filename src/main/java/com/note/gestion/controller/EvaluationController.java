@@ -28,14 +28,14 @@ public class EvaluationController {
 
     @PutMapping("/evaluation/{id_evaluation}")
     public Evaluation putModification(
-            @PathVariable(name = "id_evaluation")String idEvaluation,
+            @PathVariable(name = "id_evaluation")Long idEvaluation,
             @RequestParam EvaluationMapper evaluationModified
     ){
         return evaluationService.putModification(idEvaluation, evaluationModified);
     }
 
     @DeleteMapping("/evaluation/{id_evaluation}")
-    public String deleteEvaluation(@PathVariable(name = "id_evaluation")String idEvaluation){
+    public String deleteEvaluation(@PathVariable(name = "id_evaluation")Long idEvaluation){
         return evaluationService.deleteEvaluation(idEvaluation);
     }
 }

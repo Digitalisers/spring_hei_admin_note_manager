@@ -31,7 +31,7 @@ public class SemestreService {
     }
 
     //PUT mapping
-    public Semestre putModification(String idSemestre, Semestre SEMESTRE_MODIFIED){
+    public Semestre putModification(Long idSemestre, Semestre SEMESTRE_MODIFIED){
         Semestre SEMESTRE = semestreRepository.findById(idSemestre).orElseThrow(()-> new NullPointerException("not found"));
         if(SEMESTRE_MODIFIED.getAverage() != SEMESTRE.getAverage()){
             SEMESTRE.setAverage(SEMESTRE_MODIFIED.getAverage());
@@ -47,7 +47,7 @@ public class SemestreService {
     }
 
     //DELETE mapping
-    public String deleteSemestre(String idSemestre){
+    public String deleteSemestre(Long idSemestre){
         semestreRepository.deleteById(idSemestre);
         return "semestre deleted successfully";
     }

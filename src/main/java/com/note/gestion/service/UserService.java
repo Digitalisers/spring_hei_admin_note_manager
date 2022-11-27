@@ -65,7 +65,7 @@ public class UserService {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //PUT mapping
-    public User putModification(String idUser, UserMapper USER_MODIFIED){
+    public User putModification(Long idUser, UserMapper USER_MODIFIED){
         User USER = userRepository.findById(idUser).orElseThrow(()->new NullPointerException("not found"));
         Group GROUP = groupRepository.findById(USER_MODIFIED.getIdGroupe()).orElseThrow(()->new NullPointerException("not found"));
 
@@ -99,7 +99,7 @@ public class UserService {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //DELETE mapping
-    public String deleteUser(String idUser){
+    public String deleteUser(Long idUser){
         userRepository.deleteById(idUser);
         return "user delete successfully";
     }

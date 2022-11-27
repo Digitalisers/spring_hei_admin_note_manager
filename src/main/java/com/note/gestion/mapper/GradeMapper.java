@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class GradeMapper {
-    private String idGrade;
+    private Long idGrade;
     private Float average;
-    private String idEvaluation;
+    private Long idEvaluation;
 }

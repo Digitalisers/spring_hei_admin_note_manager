@@ -8,6 +8,8 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDate;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 
@@ -19,9 +21,13 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Semestre {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private String idSemestre;
+    private Long idSemestre;
 
     private String name;
+
+    private LocalDate beginDate;
+
+    private LocalDate finishDate;
 
     private Float average;
 

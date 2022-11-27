@@ -10,8 +10,8 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class EvaluationMapper {
-    private String idEvaluation;
+    private Long idEvaluation;
     private LocalDate dateExamen;
-    private String idCourse;
-    private String idSemestre;
+    private Long idCourse;
+    private Long idSemestre;
 }

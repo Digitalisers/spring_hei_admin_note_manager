@@ -19,7 +19,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Course {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private String idCourse;
+    private Long idCourse;
 
     private String name;
 

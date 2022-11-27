@@ -46,14 +46,14 @@ public class UserController {
 
     @PutMapping("/user/{id_user}")
     public User putModification(
-            @PathVariable(name = "id_user")String idUser,
+            @PathVariable(name = "id_user")Long idUser,
             @RequestParam UserMapper userModified
     ){
         return userService.putModification(idUser, userModified);
     }
 
     @DeleteMapping("/user/{id_user}")
-    public String deleteUser(@PathVariable(name = "id_user")String idUser){
+    public String deleteUser(@PathVariable(name = "id_user")Long idUser){
         return userService.deleteUser(idUser);
     }
 }

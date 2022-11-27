@@ -22,7 +22,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Evaluation {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private String idEvaluation;
+    private Long idEvaluation;
 
     private LocalDate dateExamen;
 

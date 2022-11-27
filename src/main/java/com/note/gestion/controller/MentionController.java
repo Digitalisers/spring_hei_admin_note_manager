@@ -33,14 +33,14 @@ public class MentionController {
 
     @PutMapping("/mention/{id_mention}")
     public Mention putModification(
-            @PathVariable(name = "id_mention")String idMention,
+            @PathVariable(name = "id_mention")Long idMention,
             @RequestParam Mention mentionModified
     ){
         return mentionService.putModification(idMention, mentionModified);
     }
 
     @DeleteMapping("/mention/{id_mention}")
-    public String deleteMention(@PathVariable(name = "id_mention")String idMention){
+    public String deleteMention(@PathVariable(name = "id_mention")Long idMention){
         return mentionService.deleteMention(idMention);
     }
 }
