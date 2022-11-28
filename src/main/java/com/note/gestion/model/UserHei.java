@@ -37,7 +37,7 @@ public class UserHei {
     @Transient
     private Float studentAverage;
 
-    private Status status;
+    private String status;
 
     private String phone;
 
@@ -45,27 +45,16 @@ public class UserHei {
 
     private Instant entranceDatetime;
 
-    private Sex sex;
+    private Character sex;
 
     private String address;
 
     @Column(name = "\"role\"")
-    private Role role;
+    private String role;
 
     @ManyToOne
     private Group group;
 
-    public enum Sex {
-        M, F
-    }
-
-    public enum Status {
-        ENABLED, DISABLED
-    }
-
-    public enum Role {
-        STUDENT, TEACHER, MANAGER
-    }
 
     @Override
     public boolean equals(Object o) {

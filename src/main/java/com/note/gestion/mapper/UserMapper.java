@@ -20,7 +20,7 @@ public class UserMapper {
 
     private String ref;
 
-    private UserHei.Status status;
+    private String status;
 
     private String phone;
 
@@ -28,11 +28,11 @@ public class UserMapper {
 
     private Instant entranceDatetime;
 
-    private UserHei.Sex sex;
+    private Character sex;
 
     private String address;
 
-    private UserHei.Role role;
+    private String role;
 
     private Long idGroupe;
 }
