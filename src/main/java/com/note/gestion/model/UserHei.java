@@ -53,7 +53,7 @@ public class UserHei {
     private Role role;
 
     @ManyToOne
-    private Group group;
+    private GroupHei groupHei;
 
     public enum Sex {
         M, F

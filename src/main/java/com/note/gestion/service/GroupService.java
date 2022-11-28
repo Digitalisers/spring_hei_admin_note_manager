@@ -1,6 +1,6 @@
 package com.note.gestion.service;
 
-import com.note.gestion.model.Group;
+import com.note.gestion.model.GroupHei;
 import com.note.gestion.repository.GroupRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -15,40 +15,40 @@ public class GroupService {
     private GroupRepository groupRepository;
 
     //GET mapping
-    public List<Group> getAllGroup(int page, int pageSize){
+    public List<GroupHei> getAllGroup(int page, int pageSize){
         Pageable pageable = PageRequest.of(page-1, pageSize);
         return groupRepository.findAll(pageable).toList();
     }
 
     //POST mapping
-    public Group insertGroup(Group newGroup){
-        Group group = new Group();
-        group.setName(newGroup.getName());
-        group.setCreationDatetime(newGroup.getCreationDatetime());
-        group.setRef(newGroup.getRef());
-        groupRepository.save(group);
-        return group;
+    public GroupHei insertGroup(GroupHei newGroupHei){
+        GroupHei groupHei = new GroupHei();
+        groupHei.setName(newGroupHei.getName());
+        groupHei.setCreationDatetime(newGroupHei.getCreationDatetime());
+        groupHei.setRef(newGroupHei.getRef());
+        groupRepository.save(groupHei);
+        return groupHei;
     }
 
     //PUT mapping
-    public Group putModification(Long idGroup, Group GROUP_MODIFIED){
-        Group GROUP = groupRepository.findById(idGroup).orElseThrow(()-> new NullPointerException("not found"));
-        if(GROUP_MODIFIED.getName() != GROUP.getName()){
-            GROUP.setName(GROUP_MODIFIED.getName());
+    public GroupHei putModification(Long idGroup, GroupHei GROUP_Hei_MODIFIED){
+        GroupHei GROUPHei = groupRepository.findById(idGroup).orElseThrow(()-> new NullPointerException("not found"));
+        if(GROUP_Hei_MODIFIED.getName() != GROUPHei.getName()){
+            GROUPHei.setName(GROUP_Hei_MODIFIED.getName());
         }
-        if(GROUP_MODIFIED.getRef() != GROUP.getRef()){
-            GROUP.setRef(GROUP_MODIFIED.getRef());
+        if(GROUP_Hei_MODIFIED.getRef() != GROUPHei.getRef()){
+            GROUPHei.setRef(GROUP_Hei_MODIFIED.getRef());
         }
-        if(GROUP_MODIFIED.getCreationDatetime() != GROUP.getCreationDatetime()){
-            GROUP.setCreationDatetime(GROUP_MODIFIED.getCreationDatetime());
+        if(GROUP_Hei_MODIFIED.getCreationDatetime() != GROUPHei.getCreationDatetime()){
+            GROUPHei.setCreationDatetime(GROUP_Hei_MODIFIED.getCreationDatetime());
         }
-        groupRepository.save(GROUP);
-        return GROUP;
+        groupRepository.save(GROUPHei);
+        return GROUPHei;
     }
 
     //DELETE mapping
     public String deleteGroup(Long idGroup){
         groupRepository.deleteById(idGroup);
-        return "group deleted successfully";
+        return "groupHei deleted successfully";
     }
 }

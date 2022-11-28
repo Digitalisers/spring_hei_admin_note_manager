@@ -28,7 +28,7 @@ public class GradeController {
     }
 
     @GetMapping("/course/grade/{id_course}")
-    public List<Grade> getGradeByCourse(@PathVariable(name = "id_course")String idCourse){
+    public List<Grade> getGradeByCourse(@PathVariable(name = "id_course")Long idCourse){
         return gradeService.getGradeByCourse(idCourse);
     }
 

@@ -2,7 +2,7 @@ package com.note.gestion.service;
 
 import com.note.gestion.mapper.UserMapper;
 import com.note.gestion.model.Grade;
-import com.note.gestion.model.Group;
+import com.note.gestion.model.GroupHei;
 import com.note.gestion.model.UserHei;
 import com.note.gestion.repository.GroupRepository;
 import com.note.gestion.repository.UserRepository;
@@ -41,13 +41,14 @@ public class UserService {
        }
        STUDENT_AVERAGE = STUDENT_AVERAGE / totalCoef;
         THIS_USER.setStudentAverage(STUDENT_AVERAGE);
+        userRepository.save(THIS_USER);
         return THIS_USER;
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //POST mapping
     public UserHei insertUser(UserMapper USER){
         UserHei NEW_USER =  new UserHei();
-        Group GROUP = groupRepository.findById(USER.getIdGroupe()).orElseThrow(()->new NullPointerException("not found"));
+        GroupHei GROUPHei = groupRepository.findById(USER.getIdGroupe()).orElseThrow(()->new NullPointerException("not found"));
         NEW_USER.setAddress(USER.getAddress());
         NEW_USER.setBirthDate(USER.getBirthDate());
         NEW_USER.setEmail(USER.getEmail());
@@ -58,7 +59,7 @@ public class UserService {
         NEW_USER.setRef(USER.getRef());
         NEW_USER.setSex(USER.getSex());
         NEW_USER.setStatus(USER.getStatus());
-        NEW_USER.setGroup(GROUP);
+        NEW_USER.setGroupHei(GROUPHei);
         userRepository.save(NEW_USER);
         return NEW_USER;
     }
@@ -67,7 +68,7 @@ public class UserService {
     //PUT mapping
     public UserHei putModification(Long idUser, UserMapper USER_MODIFIED){
         UserHei USER = userRepository.findById(idUser).orElseThrow(()->new NullPointerException("not found"));
-        Group GROUP = groupRepository.findById(USER_MODIFIED.getIdGroupe()).orElseThrow(()->new NullPointerException("not found"));
+        GroupHei GROUPHei = groupRepository.findById(USER_MODIFIED.getIdGroupe()).orElseThrow(()->new NullPointerException("not found"));
 
         if(USER.getAddress() != USER_MODIFIED.getAddress()){
             USER.setAddress(USER_MODIFIED.getAddress());
