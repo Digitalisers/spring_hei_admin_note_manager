@@ -3,7 +3,7 @@ package com.note.gestion.service;
 import com.note.gestion.mapper.UserMapper;
 import com.note.gestion.model.Grade;
 import com.note.gestion.model.Group;
-import com.note.gestion.model.User;
+import com.note.gestion.model.UserHei;
 import com.note.gestion.repository.GroupRepository;
 import com.note.gestion.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -23,15 +23,15 @@ public class UserService {
 
     //GET mapping
         //1.get all users
-    public List<User> getAllUsers(int page, int pageSize){
+    public List<UserHei> getAllUsers(int page, int pageSize){
         Pageable pageable = PageRequest.of(page-1, pageSize);
         return userRepository.findAll(pageable).toList();
     }
 
         //2.get one user.role.STUDENT
     @Transactional
-    public User getUserByAttributes(String firstName, String lastName, String ref){
-        User THIS_USER = userRepository.findByFirstNameContainingIgnoreCaseAndLastNameContainingIgnoreCaseAndRefContainingIgnoreCase(firstName, lastName, ref);
+    public UserHei getUserByAttributes(String firstName, String lastName, String ref){
+        UserHei THIS_USER = userRepository.findByFirstNameContainingIgnoreCaseAndLastNameContainingIgnoreCaseAndRefContainingIgnoreCase(firstName, lastName, ref);
         Float STUDENT_AVERAGE = null;
         Integer totalCoef = null;
         List<Grade> COURSE_GRADES = gradeService.getAllGradeOfOneStudent(THIS_USER.getIdUser());
@@ -45,8 +45,8 @@ public class UserService {
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //POST mapping
-    public User insertUser(UserMapper USER){
-        User NEW_USER =  new User();
+    public UserHei insertUser(UserMapper USER){
+        UserHei NEW_USER =  new UserHei();
         Group GROUP = groupRepository.findById(USER.getIdGroupe()).orElseThrow(()->new NullPointerException("not found"));
         NEW_USER.setAddress(USER.getAddress());
         NEW_USER.setBirthDate(USER.getBirthDate());
@@ -65,8 +65,8 @@ public class UserService {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //PUT mapping
-    public User putModification(Long idUser, UserMapper USER_MODIFIED){
-        User USER = userRepository.findById(idUser).orElseThrow(()->new NullPointerException("not found"));
+    public UserHei putModification(Long idUser, UserMapper USER_MODIFIED){
+        UserHei USER = userRepository.findById(idUser).orElseThrow(()->new NullPointerException("not found"));
         Group GROUP = groupRepository.findById(USER_MODIFIED.getIdGroupe()).orElseThrow(()->new NullPointerException("not found"));
 
         if(USER.getAddress() != USER_MODIFIED.getAddress()){

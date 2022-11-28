@@ -1,25 +1,27 @@
 package com.note.gestion.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Transient;
-import org.springframework.transaction.annotation.Transactional;
+import lombok.ToString;
+import org.hibernate.Hibernate;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
+import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
+@ToString
+@RequiredArgsConstructor
+@Entity
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class Grade implements Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -31,5 +33,18 @@ public class Grade implements Serializable {
     private Evaluation evaluation;
 
     @ManyToOne
-    private User student;
+    private UserHei student;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Grade grade = (Grade) o;
+        return idGrade != null && Objects.equals(idGrade, grade.idGrade);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

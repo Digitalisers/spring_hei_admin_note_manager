@@ -8,7 +8,6 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -16,14 +15,13 @@ import java.util.Objects;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name = "\"user\"")
 @Getter
 @Setter
 @ToString
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class UserHei {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long idUser;
@@ -73,7 +71,7 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        User user = (User) o;
+        UserHei user = (UserHei) o;
         return idUser != null && Objects.equals(idUser, user.idUser);
     }
 

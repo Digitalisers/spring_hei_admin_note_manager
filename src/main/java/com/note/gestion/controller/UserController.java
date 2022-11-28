@@ -1,7 +1,7 @@
 package com.note.gestion.controller;
 
 import com.note.gestion.mapper.UserMapper;
-import com.note.gestion.model.User;
+import com.note.gestion.model.UserHei;
 import com.note.gestion.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,7 +20,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/user")
-    public List<User> getUser(
+    public List<UserHei> getUser(
             @RequestParam(name = "page", required = false)int page,
             @RequestParam(name = "page_size", required = false)int pageSize,
             @RequestParam(name = "last_name", required = false)String lastName,
@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @GetMapping("/student")
-    public User getUserWithAttribute(
+    public UserHei getUserWithAttribute(
             @RequestParam(name = "first_name")String firstName,
             @RequestParam(name = "last_name")String lastName,
             @RequestParam(name = "ref")String ref
@@ -40,12 +40,12 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public User insertUser(@RequestParam UserMapper newUser){
+    public UserHei insertUser(@RequestParam UserMapper newUser){
         return userService.insertUser(newUser);
     }
 
     @PutMapping("/user/{id_user}")
-    public User putModification(
+    public UserHei putModification(
             @PathVariable(name = "id_user")Long idUser,
             @RequestParam UserMapper userModified
     ){

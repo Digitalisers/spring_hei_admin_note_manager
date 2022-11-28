@@ -1,6 +1,6 @@
 package com.note.gestion.mapper;
 
-import com.note.gestion.model.User;
+import com.note.gestion.model.UserHei;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -20,7 +20,7 @@ public class UserMapper {
 
     private String ref;
 
-    private User.Status status;
+    private UserHei.Status status;
 
     private String phone;
 
@@ -28,11 +28,11 @@ public class UserMapper {
 
     private Instant entranceDatetime;
 
-    private User.Sex sex;
+    private UserHei.Sex sex;
 
     private String address;
 
-    private User.Role role;
+    private UserHei.Role role;
 
     private Long idGroupe;
 }
