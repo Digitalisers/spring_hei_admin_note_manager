@@ -30,13 +30,9 @@ public class UserController {
         return userService.getAllUsers(page, pageSize);
     }
 
-    @GetMapping("/student")
-    public UserHei getUserWithAttribute(
-            @RequestParam(name = "first_name")String firstName,
-            @RequestParam(name = "last_name")String lastName,
-            @RequestParam(name = "ref")String ref
-    ){
-        return userService.getUserByAttributes(firstName, lastName, ref);
+    @GetMapping("/student/{ref}")
+    public UserHei getUserWithAttribute(@PathVariable(name = "ref")String ref){
+        return userService.getUserByAttributes(ref);
     }
 
     @PostMapping("/user")

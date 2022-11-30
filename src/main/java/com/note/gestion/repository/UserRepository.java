@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserHei, Long> {
-    UserHei findByFirstNameContainingIgnoreCaseAndLastNameContainingIgnoreCaseAndRefContainingIgnoreCase(String firstName, String lastName, String ref);
+    UserHei findByRef(String ref);
 }

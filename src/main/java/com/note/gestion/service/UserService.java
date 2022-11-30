@@ -30,10 +30,10 @@ public class UserService {
 
         //2.get one user.role.STUDENT
     @Transactional
-    public UserHei getUserByAttributes(String firstName, String lastName, String ref){
-        UserHei THIS_USER = userRepository.findByFirstNameContainingIgnoreCaseAndLastNameContainingIgnoreCaseAndRefContainingIgnoreCase(firstName, lastName, ref);
-        Float STUDENT_AVERAGE = null;
-        Integer totalCoef = null;
+    public UserHei getUserByAttributes(String ref){
+        UserHei THIS_USER = userRepository.findByRef(ref);
+        Float STUDENT_AVERAGE = 0F;
+        Integer totalCoef = 0;
         List<Grade> COURSE_GRADES = gradeService.getAllGradeOfOneStudent(THIS_USER.getIdUser());
        for(Grade grade : COURSE_GRADES){
            STUDENT_AVERAGE += grade.getAverage();

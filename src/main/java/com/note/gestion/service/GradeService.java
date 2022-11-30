@@ -26,7 +26,7 @@ public class GradeService {
         return gradeRepository.findAll(pageable).toList();
     }
         //2.get all grade of one course in one specific semester
-    public List<Grade> getGradeByCourse(String idCourse){
+    public List<Grade> getGradeByCourse(Long idCourse){
         List<Grade> ALL_GRADE = gradeRepository.findAll();
         return ALL_GRADE.stream().filter(element -> {
             return  element
