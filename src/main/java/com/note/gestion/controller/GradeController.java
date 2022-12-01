@@ -23,13 +23,13 @@ public class GradeController {
     }
 
     @GetMapping("/course/grade/{id_course}")
-    public List<Grade> getGradeByCourse(@PathVariable(name = "id_course")String idCourse){
+    public List<Grade> getGradeByCourse(@PathVariable(name = "id_course")Long idCourse){
         return gradeService.getGradeByCourse(idCourse);
     }
 
-    @GetMapping("/student/grade/{id_student}")
-    public List<Grade> getGradeByStudent(@PathVariable(name = "id_student")Long idStudent){
-        return gradeService.getAllGradeOfOneStudent(idStudent);
+    @GetMapping("/student/grade/{ref}")
+    public List<Grade> getGradeByStudent(@PathVariable(name = "ref")String ref){
+        return gradeService.getAllGradeOfOneStudent(ref);
     }
 
     @PostMapping("/grade")

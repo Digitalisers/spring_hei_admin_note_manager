@@ -34,7 +34,7 @@ public class UserService {
         UserHei THIS_USER = userRepository.findByFirstNameContainingIgnoreCaseAndLastNameContainingIgnoreCaseAndRefContainingIgnoreCase(firstName, lastName, ref);
         Float STUDENT_AVERAGE = null;
         Integer totalCoef = null;
-        List<Grade> COURSE_GRADES = gradeService.getAllGradeOfOneStudent(THIS_USER.getIdUser());
+        List<Grade> COURSE_GRADES = gradeService.getAllGradeOfOneStudent(THIS_USER.getRef());
        for(Grade grade : COURSE_GRADES){
            STUDENT_AVERAGE += grade.getAverage();
            totalCoef += grade.getEvaluation().getCourse().getCoef();
