@@ -21,14 +21,14 @@ public class GroupController {
     }
 
     @PostMapping("/group")
-    public Group insertGroup(@RequestParam Group newGroup){
+    public Group insertGroup(@RequestBody Group newGroup){
         return groupService.insertGroup(newGroup);
     }
 
     @PutMapping("/group/{id_group}")
     public Group putModification(
             @PathVariable(name = "id_group")Long idGroup,
-            @RequestParam Group groupModified
+            @RequestBody Group groupModified
     ){
         return groupService.putModification(idGroup, groupModified);
     }

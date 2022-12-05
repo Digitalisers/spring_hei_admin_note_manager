@@ -4,13 +4,7 @@ import com.note.gestion.mapper.UserMapper;
 import com.note.gestion.model.UserHei;
 import com.note.gestion.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,14 +30,14 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public UserHei insertUser(@RequestParam UserMapper newUser){
+    public UserHei insertUser(@RequestBody UserMapper newUser){
         return userService.insertUser(newUser);
     }
 
     @PutMapping("/user/{id_user}")
     public UserHei putModification(
             @PathVariable(name = "id_user")Long idUser,
-            @RequestParam UserMapper userModified
+            @RequestBody UserMapper userModified
     ){
         return userService.putModification(idUser, userModified);
     }

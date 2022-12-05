@@ -22,14 +22,14 @@ public class EvaluationController {
     }
 
     @PostMapping("/evaluation")
-    public Evaluation insertEvaluation(@RequestParam EvaluationMapper newEvaluation){
+    public Evaluation insertEvaluation(@RequestBody EvaluationMapper newEvaluation){
         return evaluationService.insertEvaluation(newEvaluation);
     }
 
     @PutMapping("/evaluation/{id_evaluation}")
     public Evaluation putModification(
             @PathVariable(name = "id_evaluation")Long idEvaluation,
-            @RequestParam EvaluationMapper evaluationModified
+            @RequestBody EvaluationMapper evaluationModified
     ){
         return evaluationService.putModification(idEvaluation, evaluationModified);
     }

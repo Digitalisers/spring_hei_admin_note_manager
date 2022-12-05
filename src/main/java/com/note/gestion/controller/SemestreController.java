@@ -21,14 +21,14 @@ public class SemestreController {
     }
 
     @PostMapping("/semestre")
-    public Semestre insertSemestre(@RequestParam Semestre newSemestre){
+    public Semestre insertSemestre(@RequestBody Semestre newSemestre){
         return semestreService.insertSemestre(newSemestre);
     }
 
     @PutMapping("/semestre/{id_semestre}")
     public Semestre putModification(
             @PathVariable(name = "id_semestre")Long idSemestre,
-            @RequestParam Semestre semestreModified
+            @RequestBody Semestre semestreModified
     ){
         return semestreService.putModification(idSemestre, semestreModified);
     }
